@@ -1,0 +1,22 @@
+<div class="container">
+<header><h1>User Profiles</h1></header>
+<section>
+    <div class="card" *ngFor="let user of users">
+        
+        <div class="pfimg"><img src="../assets/img/img3.jpg"/></div>
+        <div class="content">
+            <p class="title">{{user.userName|titlecase}}</p>
+            <p class="job">{{user.userDesignation|titlecase}}</p>
+        </div>
+        <div class="media">
+            <p class="mobile"><img src="../assets/img/mobilelogo.png"/></p>
+            <p class="fb"><a [attr.href]="'//'+user.userFbLink"><img src="../assets/img/fblogo.png"/></a></p>
+            <p class="twitter"><a [attr.href]="'//'+user.userTwitLink"><img src="../assets/img/twitterlogo.png"/></a></p>
+            <p class="linkedin"><a [attr.href]="'//'+user.userLinkedLink"><img src="../assets/img/linkedinlogo.png"/></a></p>
+        </div>
+    
+    </div>
+</section>
+<footer><p (click)="open()">+</p></footer>
+
+</div>
