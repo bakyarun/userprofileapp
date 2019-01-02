@@ -28,4 +28,9 @@ export class AppComponent{
             this.users.push(result);
         });
     }
+
+    editProfile(value:number){
+        const modalRef=this.modalService.open(AddProfileComponent);
+        modalRef.componentInstance.user = this.users[value];
+    }
 }

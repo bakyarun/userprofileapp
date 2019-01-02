@@ -1,7 +1,7 @@
 <div class="container">
 <header><h1>User Profiles</h1></header>
 <section>
-    <div class="card" *ngFor="let user of users">
+    <div class="card" *ngFor="let user of users| index as idx" (click)="editProfile(idx)">
         
         <div class="pfimg"><img src="../assets/img/img3.jpg"/></div>
         <div class="content">

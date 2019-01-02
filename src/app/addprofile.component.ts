@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormGroup,FormControl} from '@angular/forms'; 
 
@@ -8,9 +8,23 @@ import {FormGroup,FormControl} from '@angular/forms';
     
 })
 export class AddProfileComponent{
+
+    @Input() user:any;
     
     constructor(public activeModal: NgbActiveModal){
 
+    }
+
+    ngOnInit(){
+        if(this.user!=null){
+            this.addUserForm.setValue({userName:this.user["userName"],
+            userDesignation:this.user["userDesignation"],
+            userMobile:this.user["userMobile"],
+            userFbLink:this.user["userFbLink"],
+            userTwitLink:this.user["userTwitLink"],
+            userLinkedLink:this.user["userLinkedLink"]
+        })
+        }
     }
     close() {
         this.activeModal.close('Modal Closed');
