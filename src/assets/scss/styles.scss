@@ -33,6 +33,8 @@ header{
 
 header h1{
     text-align:center;
+    padding:2%;
+    font-size:3rem;
 }
 
 footer{
@@ -59,6 +61,15 @@ footer p{
 section{
     width:100%;
     height:75%;
+    
+}
+
+.title{
+    font-size:1.5rem;
+}
+
+.job{
+    font-size:1rem;
 }
 
 .card{
@@ -66,9 +77,11 @@ section{
     height:60vmax;
     margin:15%;
     display:block;
-    background-color:#e6e6e6;
+    background-color:#e6f2ff;
     border:1px solid black;
     border-radius:2%;
+    box-shadow:2px 2px grey;
+    cursor:pointer;
 }
 
 
@@ -123,11 +136,11 @@ section{
 
 @media screen and (min-width:map-get($breakpoints,md)){
 
-section{
+section{  
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
-}
+  }
 
 .card{
     width:40%;
@@ -155,7 +168,7 @@ footer p{
     }
     
     .card{
-        width:15vw;
+        width:35vw;
         height:50vh;
         margin:5%;
         
@@ -163,5 +176,25 @@ footer p{
     .pfimg img{
         width:30%;
         height:50%;
+    }
+}
+
+@media screen and(min-width:map-get($breakpoints,xl)){
+ 
+    section{
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+    
+    .card{
+        width:15vw;
+        height:40vh;
+        margin:5%;
+        
+    }
+    .pfimg img{
+        width:30%;
+        height:65%;
     }
 }

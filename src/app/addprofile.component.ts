@@ -1,13 +1,13 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {FormGroup,FormControl} from '@angular/forms'; 
+import {FormGroup,FormControl,Validators} from '@angular/forms'; 
 
 @Component({
     selector:'add-profile',
     templateUrl:'./addprofile.component.html',
     
 })
-export class AddProfileComponent{
+export class AddProfileComponent implements OnInit{
 
     @Input() user:any;
     
@@ -31,9 +31,9 @@ export class AddProfileComponent{
       }
 
     addUserForm:FormGroup=new FormGroup({
-        userName:new FormControl(''),
-        userDesignation:new FormControl(''),
-        userMobile:new FormControl(''),
+        userName:new FormControl('',[Validators.required]),
+        userDesignation:new FormControl('',[Validators.required]),
+        userMobile:new FormControl('',[Validators.required,Validators.minLength(10)]),
         userFbLink:new FormControl(''),
         userTwitLink:new FormControl(''),
         userLinkedLink:new FormControl('')
