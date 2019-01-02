@@ -15,6 +15,7 @@ export class AddProfileComponent implements OnInit{
 
     }
 
+    //Initialize the form when there is user data received from Parent Component(App Component)
     ngOnInit(){
         if(this.user!=null){
             this.addUserForm.setValue({userName:this.user["userName"],
@@ -26,10 +27,13 @@ export class AddProfileComponent implements OnInit{
         })
         }
     }
+
+    //close the modal when user clicks the close icon
     close() {
         this.activeModal.close('Modal Closed');
       }
 
+    //form configuration
     addUserForm:FormGroup=new FormGroup({
         userName:new FormControl('',[Validators.required]),
         userDesignation:new FormControl('',[Validators.required]),
@@ -39,7 +43,7 @@ export class AddProfileComponent implements OnInit{
         userLinkedLink:new FormControl('')
     })
     
-
+    //send the form data through modal when user submits
     submitForm(){
         this.activeModal.close(this.addUserForm.value);
     }

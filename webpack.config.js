@@ -1,22 +1,22 @@
+//configurations to use webpack 
+
 var path = require('path');
 const webpack = require('webpack');
-const helpers = require('./helpers');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { AngularCompilerPlugin } = require('@ngtools/webpack');
 
 module.exports = function () {
    return {
        mode:'development',
-       entry: './src/main.ts',
-       output: {
+       entry: './src/main.ts', //entry file which server to start with
+       output: {               //path where output bundles are placed
         path: path.join(__dirname, "./dist/"),
         filename: "[name].bundle.js",
        },
        resolve: {
         extensions: ['.ts', '.js']
       },
-      module: {
+      module: {       //rules to check different files and load appropriate loader
         rules: [
           {
             test: /\.ts$/, 
@@ -30,7 +30,7 @@ module.exports = function () {
           },
           {
             test: /\.css$/,
-            include: helpers.root('src', 'app'),
+            include: path.resolve(__dirname,'src/app'),
             loader: 'raw-loader'
           },
           {
@@ -42,28 +42,26 @@ module.exports = function () {
         },
 
        plugins: [
-            new webpack.ContextReplacementPlugin(
+            new webpack.ContextReplacementPlugin(   //Plugin to set the context path to start with
             /angular(\\|\/)core(\\|\/)fesm5/,
-            helpers.root('./src'), // location of your src
-            {} // a map of your routes
+            path.resolve(__dirname,'./src'), // location of src
+            {} 
             ),
-           //new CopyWebpackPlugin([
-           //    { from: 'src/assets', to: 'assets'}
-           //]), 
+            
            new HtmlWebpackPlugin({
                template: __dirname + '/src/index.html',
                filename: "index.html",
                path: path.join(__dirname ,'./dist'),
                
            }),
-           new AngularCompilerPlugin({
+           new AngularCompilerPlugin({        //plugin to perform AOT compilation
             tsConfigPath: './tsconfig.json',
             entryModule: './src/app/app.module#AppModule',
             sourceMap: true
          })
            
        ],
-       optimization: {
+       optimization: {    //split files into chunks
         splitChunks: {
         chunks: 'all'
         }

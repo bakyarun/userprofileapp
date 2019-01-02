@@ -9,6 +9,6 @@ const environment={production:false};
 if (environment.production) {
   enableProdMode();
 }
-
+//Initiating the Application Module
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
