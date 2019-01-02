@@ -10,7 +10,7 @@ module.exports = function () {
        mode:'development',
        entry: './src/main.ts',
        output: {
-        path: path.join(__dirname, "../dist/"),
+        path: path.join(__dirname, "./dist/"),
         filename: "[name].bundle.js",
        },
        resolve: {
@@ -53,7 +53,7 @@ module.exports = function () {
            new HtmlWebpackPlugin({
                template: __dirname + '/src/index.html',
                filename: "index.html",
-               path: path.join(__dirname ,'../dist'),
+               path: path.join(__dirname ,'./dist'),
                
            }),
            new AngularCompilerPlugin({

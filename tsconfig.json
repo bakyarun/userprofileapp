@@ -11,7 +11,7 @@
     ],
       "lib": ["es2015", "dom"],
       "types":["node"],
-      "outDir": "../dist",
+      "outDir": "./dist",
       "noImplicitAny": true,
       "suppressImplicitAnyIndexErrors": true
     }
